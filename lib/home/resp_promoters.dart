@@ -11,39 +11,47 @@ class _RESPPromotersState extends State<RESPPromoters> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading:  null,
+        centerTitle: true,
+        title: Text("Select RESP Promoter",
+          style: Theme.of(context).textTheme.headline4,
+        ),
+
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 20.0 , top: 10),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                GestureDetector(
+                  onTap: (){
+                    Navigator.of(context).pop();
+                  },
+                  child: Container(
+                      alignment: Alignment.center,
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).unselectedWidgetColor,
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      child: const Icon(Icons.close,
+                      color: Colors.black,)
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
       body: Container(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0,right: 20, top: 50, ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 50.0),
-                    child: Text("Select RESP Promoter",
-                      style: Theme.of(context).textTheme.headline4,
-                    ),
-                  ),
-
-                  GestureDetector(
-                    onTap: (){
-                      // Navigator.pop(context);
-                    },
-                    child: Container(
-                        alignment: Alignment.center,
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).unselectedWidgetColor,
-                            borderRadius: BorderRadius.circular(10)
-                        ),
-                        child: const Icon(Icons.close)
-                    ),
-                  ),
-                ],
-              ),
-            ),
 
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20),

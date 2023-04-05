@@ -1,3 +1,4 @@
+import 'package:clb/home/clb_partners.dart';
 import 'package:clb/home/clb_resources.dart';
 import 'package:clb/home/clb_resources/social_insurance_number.dart';
 import 'package:clb/home/clb_resources/tax_clinic_location.dart';
@@ -6,6 +7,10 @@ import 'package:clb/home/eligibility_check.dart';
 import 'package:clb/home/landingscreen.dart';
 import 'package:clb/home/profile.dart';
 import 'package:clb/home/resp_promoters.dart';
+import 'package:clb/home/resp_support.dart';
+import 'package:clb/home/resp_support/how_it_works.dart';
+import 'package:clb/home/resp_support/types.dart';
+import 'package:clb/onboarding/auth/home_auth.dart';
 import 'package:clb/onboarding/splashscreen.dart';
 import 'package:clb/profile/contact_us.dart';
 import 'package:flutter/material.dart';
@@ -45,17 +50,19 @@ class _MyHomePageState extends State<MyHomePage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Canada Learning Bond',
-
       theme: ThemeData(
         primaryColor: Color(0xffFFA500),
         accentColor: Color(0xff790252),
-        backgroundColor: Color(0xffFFA500).withOpacity(0.1),
+        backgroundColor: Color(0xffFFA500).withOpacity(0.15),
         unselectedWidgetColor: Color(0xffeeeeee),
         primaryColorDark: Color(0xff000000),
         primaryColorLight: Color(0xffffffff),
         appBarTheme: const AppBarTheme(
-          color: Colors.transparent, //<-- SEE HERE
+          color: Colors.transparent,
+          elevation: 0,
+          iconTheme: IconThemeData(color: Colors.black),
         ),
+
         fontFamily: 'OpenSans',
         textTheme:  const TextTheme(
           // body text styles
@@ -118,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
               letterSpacing: 0.4),
         ),
       ),
-      home: TaxClinicLocation(),
+      home: HomeAuth(),
     );
   }
 }

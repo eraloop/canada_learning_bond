@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:clb/helper/app_utils.dart';
 import 'package:clb/home/landingscreen.dart';
+import 'package:clb/onboarding/auth/home_auth.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,14 +17,14 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    // Timer(const Duration(seconds: 4), () {
-    //
-    //     Navigator.pushAndRemoveUntil(
-    //         context,
-    //         MaterialPageRoute(builder: (context) => const LandingScreen()),
-    //             (route) => false);
-    //
-    // });
+    Timer(const Duration(seconds: 4), () {
+
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const HomeAuth()),
+                (route) => false);
+
+    });
     super.initState();
   }
   @override
@@ -39,9 +40,13 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               Column(
                 children: [
-                  FittedBox(
-                    child: Image.asset("assets/images/student-studying-in-classroom.jpg",
-                    height: 150, width: 150),
+                  const Padding(
+                    padding:  EdgeInsets.all(10.0),
+                    child: CircleAvatar(
+                      radius: 70,
+                      backgroundImage: AssetImage("assets/images/student-studying-in-classroom.jpg",
+                      ),
+                    ),
                   ),
                    Text("CLB POST \nSECONDARY",
                    textAlign: TextAlign.center,
@@ -52,6 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Column(
 
                   children:  <Widget> [
+
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 25.0),
                       child: SizedBox(

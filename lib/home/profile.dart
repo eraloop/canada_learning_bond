@@ -1,3 +1,10 @@
+import 'package:clb/profile/clb_legals.dart';
+import 'package:clb/profile/contact_us.dart';
+import 'package:clb/profile/documents.dart';
+import 'package:clb/profile/help_faq.dart';
+import 'package:clb/profile/privacy_policies.dart';
+import 'package:clb/profile/setting.dart';
+import 'package:clb/profile/tnc.dart';
 import 'package:flutter/material.dart';
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -12,48 +19,41 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
         extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         elevation: 0,
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: Text("User Profile",
+          style: Theme.of(context).textTheme.headline5,
+        ) ,
+        leading:  Container(
+          margin: const EdgeInsets.only(left: 20.0 , top: 10),
+          child: GestureDetector(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Container(
+                alignment: Alignment.center,
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                    color: Theme.of(context).unselectedWidgetColor,
+                    borderRadius: BorderRadius.circular(10)
+                ),
+                child: const Icon(Icons.arrow_back_ios_new,
+                  color: Colors.black,)
+            ),
+          ),
+        ),
 
       ),
       body: Container(
-        padding: EdgeInsets.only(top: 25),
+        margin: EdgeInsets.only(top: 90),
         // alignment: Alignment.center,
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0,right: 20, top: 50, ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
 
-                  children: [
-                    GestureDetector(
-                      onTap: (){
-                        // Navigator.pop(context);
-                      },
-                      child: Container(
-                          alignment: Alignment.center,
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).unselectedWidgetColor,
-                              borderRadius: BorderRadius.circular(10)
-                          ),
-                          child: const Icon(Icons.arrow_back_ios_new)
-                      ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 80.0),
-                      child: Text("User Profile",
-                        style: Theme.of(context).textTheme.headline5,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               Container(
                 margin: EdgeInsets.symmetric(vertical: 20),
                   alignment: Alignment.center,
@@ -88,6 +88,9 @@ class _ProfileState extends State<Profile> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5.0),
                       child: GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileSettings()));
+                        },
                         child: Container(
                           margin: EdgeInsets.symmetric(horizontal: 20),
                           padding:  EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -112,6 +115,9 @@ class _ProfileState extends State<Profile> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5.0),
                       child: GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileSettings()));
+                        },
                         child: Container(
                           margin: EdgeInsets.symmetric(horizontal: 20),
                           padding:  EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -136,6 +142,9 @@ class _ProfileState extends State<Profile> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5.0),
                       child: GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileDocuments()));
+                        },
                         child: Container(
                           margin: EdgeInsets.symmetric(horizontal: 20),
                           padding:  EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -161,6 +170,9 @@ class _ProfileState extends State<Profile> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5.0),
                       child: GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => FAQ()));
+                        },
                         child: Container(
                           margin: EdgeInsets.symmetric(horizontal: 20),
                           padding:  EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -185,6 +197,9 @@ class _ProfileState extends State<Profile> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5.0),
                       child: GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ContactUs()));
+                        },
                         child: Container(
                           margin: EdgeInsets.symmetric(horizontal: 20),
                           padding:  EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -209,6 +224,9 @@ class _ProfileState extends State<Profile> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5.0),
                       child: GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => CLB_Legals()));
+                        },
                         child: Container(
                           margin: EdgeInsets.symmetric(horizontal: 20),
                           padding:  EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -233,6 +251,9 @@ class _ProfileState extends State<Profile> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5.0),
                       child: GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileTnC()));
+                        },
                         child: Container(
                           margin: EdgeInsets.symmetric(horizontal: 20),
                           padding:  EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -257,6 +278,9 @@ class _ProfileState extends State<Profile> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5.0),
                       child: GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => PrivacyPolicy()));
+                        },
                         child: Container(
                           margin: EdgeInsets.symmetric(horizontal: 20),
                           padding:  EdgeInsets.symmetric(vertical: 10, horizontal: 15),

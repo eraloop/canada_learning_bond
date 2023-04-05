@@ -1,3 +1,5 @@
+import 'package:clb/home/landingscreen.dart';
+import 'package:clb/onboarding/auth/home_auth.dart';
 import 'package:clb/onboarding/auth/login.dart';
 import 'package:flutter/material.dart';
 
@@ -28,59 +30,71 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       extendBody: true,
-      body: Container(
-
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 50),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: (){
-                        // Navigator.pop(context);
-                      },
-                      child: Container(
-                          alignment: Alignment.center,
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).unselectedWidgetColor,
-                              borderRadius: BorderRadius.circular(10)
-                          ),
-                          child: const Icon(Icons.arrow_back_ios_new)
-                      ),
-                    ),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      LogIn()));
-                        },
-                        style: ButtonStyle(
-                          overlayColor: MaterialStateProperty.all(Colors.transparent),
-                        ),
-                        child: Text(
-                          "LogIn",
-                          style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              fontFamily: 'Poppins',
-                              fontStyle: FontStyle.normal,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600),
-                        )),
-                  ],
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading:  Container(
+          margin: const EdgeInsets.only(left: 20.0 , top: 20),
+          child: GestureDetector(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Container(
+                alignment: Alignment.center,
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                    color: Theme.of(context).unselectedWidgetColor,
+                    borderRadius: BorderRadius.circular(10)
                 ),
-              ),
+                child: const Icon(Icons.arrow_back_ios_new,
+                color: Colors.black,)
+            ),
+          ),
 
+        ),
+
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 20.0 , top: 20),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  LogIn()));
+                    },
+                    style: ButtonStyle(
+                      overlayColor: MaterialStateProperty.all(Colors.transparent),
+                    ),
+                    child: Text(
+                      "LogIn",
+                      style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontFamily: 'Poppins',
+                          fontStyle: FontStyle.normal,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600),
+                    )),
+              ],
+            ),
+          )
+        ],
+      ),
+      body: Container(
+        // color: Colors.transparent,
+        // margin: const EdgeInsets.only(top: 40.0, ),
+        child: Expanded(
+          child: ListView(
+            padding: EdgeInsets.symmetric(vertical: 15),
+            children: [
               Text("Create New Account",
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headline2,),
@@ -94,19 +108,21 @@ class _SignUpState extends State<SignUp> {
                       fontWeight: FontWeight.w300,
                       fontSize: 20)),
 
-              Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(top: 20),
-                  height: 80,
-                  width: 80,
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).unselectedWidgetColor,
-                      borderRadius: BorderRadius.circular(20)
-                  ),
-                  child: const Icon(Icons.person,
-                  size: 50,)
-              ),
-
+              // SizedBox(
+              //   height: 80,
+              //   // width: 80,
+              //   child: Container(
+              //       alignment: Alignment.center,
+              //       margin: EdgeInsets.only(top: 20),
+              //
+              //       decoration: BoxDecoration(
+              //           color: Theme.of(context).unselectedWidgetColor,
+              //           borderRadius: BorderRadius.circular(20)
+              //       ),
+              //       child: const Icon(Icons.person,
+              //         size: 50,)
+              //   ),
+              // ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
                 child: Form(
@@ -487,50 +503,51 @@ class _SignUpState extends State<SignUp> {
                       ),
 
                       Container(
-                        alignment: Alignment.centerLeft,
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text("By signing up you agree to the ",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Poppins',
-                                  height: 1.5,
-                                  fontStyle: FontStyle.normal,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16),
-                            ),
-                            Row(
-                              children: <Widget> [
-                                Text("Terms and Conditions ",
-                                  style: TextStyle(
-                                      color: Theme.of(context).primaryColor,
-                                      fontFamily: 'poppins',
-                                      height: 1.5,
-                                      fontStyle: FontStyle.normal,
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 18),
-                                ),
-                                const Text("of CLB 2022",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontFamily: 'poppins',
-                                      height: 1.5,
-                                      fontStyle: FontStyle.normal,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 16),
-                                ),
-                              ]
-                            )
-                          ],
-                        )
+                          alignment: Alignment.centerLeft,
+                          margin: const EdgeInsets.symmetric(
+                              vertical: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text("By signing up you agree to the ",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontFamily: 'Poppins',
+                                    height: 1.5,
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16),
+                              ),
+                              Row(
+                                  children: <Widget> [
+                                    Text("Terms and Conditions ",
+                                      style: TextStyle(
+                                          color: Theme.of(context).primaryColor,
+                                          fontFamily: 'poppins',
+                                          height: 1.5,
+                                          fontStyle: FontStyle.normal,
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 18),
+                                    ),
+                                    const Text("of CLB 2022",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: 'poppins',
+                                          height: 1.5,
+                                          fontStyle: FontStyle.normal,
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 16),
+                                    ),
+                                  ]
+                              )
+                            ],
+                          )
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10.0),
                         child: TextButton(
-                          onPressed: () async {
+                          onPressed: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => LandingScreen()));
                           },
                           style: ButtonStyle(
                               padding: MaterialStateProperty.all<EdgeInsets>(

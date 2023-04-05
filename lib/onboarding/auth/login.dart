@@ -1,3 +1,5 @@
+import 'package:clb/home/landingscreen.dart';
+import 'package:clb/onboarding/auth/home_auth.dart';
 import 'package:clb/onboarding/auth/signup.dart';
 import 'package:flutter/material.dart';
 
@@ -25,59 +27,70 @@ class _LogInState extends State<LogIn> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       extendBody: true,
-      body: Container(
-
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 50),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: (){
-                        // Navigator.pop(context);
-                      },
-                      child: Container(
-                        alignment: Alignment.center,
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).unselectedWidgetColor,
-                            borderRadius: BorderRadius.circular(10)
-                        ),
-                        child: const Icon(Icons.arrow_back_ios_new)
-                      ),
-                    ),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      SignUp()));
-                        },
-                        style: ButtonStyle(
-                          overlayColor: MaterialStateProperty.all(Colors.transparent),
-                        ),
-                        child: Text(
-                          "Create Account",
-                          style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              fontFamily: 'Poppins',
-                              fontStyle: FontStyle.normal,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600),
-                        )),
-                  ],
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading:  Container(
+          margin: const EdgeInsets.only(left: 20.0 , top: 20),
+          child: GestureDetector(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Container(
+                alignment: Alignment.center,
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                    color: Theme.of(context).unselectedWidgetColor,
+                    borderRadius: BorderRadius.circular(10)
                 ),
-              ),
+                child: const Icon(Icons.arrow_back_ios_new,
+                color: Colors.black,)
+            ),
+          ),
 
+        ),
+
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 20.0 , top: 20),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  SignUp()));
+                    },
+                    style: ButtonStyle(
+                      overlayColor: MaterialStateProperty.all(Colors.transparent),
+                    ),
+                    child: Text(
+                      "SignUp",
+                      style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontFamily: 'Poppins',
+                          fontStyle: FontStyle.normal,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600),
+                    )),
+              ],
+            ),
+          )
+        ],
+      ),
+      body: Container(
+        padding: const EdgeInsets.only(left: 20.0,right: 20, ),
+        child: Expanded(
+          child: ListView(
+            padding: const EdgeInsets.symmetric(vertical: 30),
+            children: [
               const Padding(
                 padding:  EdgeInsets.only(bottom: 15.0),
                 child: CircleAvatar(
@@ -91,18 +104,17 @@ class _LogInState extends State<LogIn> {
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headline2,),
               const Text("Enter your email and password below",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.grey,
-                    fontFamily: 'OpenSans',
-                    height: 1.5,
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w300,
-                    fontSize: 20)),
-
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontFamily: 'OpenSans',
+                      height: 1.5,
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w300,
+                      fontSize: 20)),
 
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                padding: EdgeInsets.symmetric( vertical: 30),
                 child: Form(
                   key: formKey,
                   child: Column(
@@ -182,7 +194,7 @@ class _LogInState extends State<LogIn> {
                         ),
                       ),
 
-                    //  password
+                      //  password
                       Padding(
 
                         padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -289,13 +301,13 @@ class _LogInState extends State<LogIn> {
                             ),
                             const Expanded(
                                 child: Text(
-                                    "Remember Me",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontFamily: 'Poppins',
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600),)),
+                                  "Remember Me",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: 'Poppins',
+                                      fontStyle: FontStyle.normal,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600),)),
 
 
                           ],
@@ -305,7 +317,9 @@ class _LogInState extends State<LogIn> {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10.0),
                         child: TextButton(
-                          onPressed: () async {
+                          onPressed: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => LandingScreen()));
+
                           },
                           style: ButtonStyle(
                               padding: MaterialStateProperty.all<EdgeInsets>(
@@ -334,7 +348,7 @@ class _LogInState extends State<LogIn> {
                           },
                           style: ButtonStyle(
                             overlayColor: MaterialStateProperty.all(Colors.transparent),
-                             ),
+                          ),
                           child: Text(
                             "Forgot Password ?",
                             style: TextStyle(

@@ -1,3 +1,5 @@
+import 'package:clb/onboarding/auth/login.dart';
+import 'package:clb/onboarding/auth/signup.dart';
 import 'package:flutter/material.dart';
 
 class HomeAuth extends StatefulWidget {
@@ -14,6 +16,7 @@ class _HomeAuthState extends State<HomeAuth> {
     "assets/images/young-students-having-fun.jpg",
     "assets/images/student-smiling-01.jpg"
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +41,11 @@ class _HomeAuthState extends State<HomeAuth> {
                 style: Theme.of(context).textTheme.headline2,),
 
               Container(
-                margin: EdgeInsets.symmetric(vertical: 30),
+                margin: const EdgeInsets.symmetric(vertical: 30),
                 height: 270,
                 child: ListView.separated(
+                  // padding: EdgeInsets.only(left: 0),
+
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemCount: images.length,
@@ -62,7 +67,7 @@ class _HomeAuthState extends State<HomeAuth> {
               ),
               Container(
                 // height: 200,
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 width: double.infinity,
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.,
@@ -72,7 +77,8 @@ class _HomeAuthState extends State<HomeAuth> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
                       child: TextButton(
-                        onPressed: () async {
+                        onPressed: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => LogIn()));
                         },
                         style: ButtonStyle(
                             padding: MaterialStateProperty.all<EdgeInsets>(
@@ -97,7 +103,8 @@ class _HomeAuthState extends State<HomeAuth> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
                       child: TextButton(
-                        onPressed: () async {
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignUp()));
                         },
                         style: ButtonStyle(
                             padding: MaterialStateProperty.all<EdgeInsets>(
@@ -108,7 +115,6 @@ class _HomeAuthState extends State<HomeAuth> {
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10.0),
                                 )),
-
                             backgroundColor:
                             MaterialStateProperty.all(Theme.of(context).unselectedWidgetColor)),
                         child: Text(

@@ -7,51 +7,6 @@ class Promoters extends StatelessWidget {
     return  Expanded(
       child: ListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 5,  ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: (){
-                    // Navigator.pop(context);
-                  },
-                  child: Container(
-                      alignment: Alignment.center,
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).unselectedWidgetColor,
-                          borderRadius: BorderRadius.circular(10)
-                      ),
-                      child: const Icon(Icons.arrow_back_ios_new)
-                  ),
-                ),
-                GestureDetector(
-                  onTap: (){
-                    // Navigator.pop(context);
-                  },
-                  child: Text("CLB Support",
-                    style: Theme.of(context).textTheme.headline4,),
-                ),
-                GestureDetector(
-                  onTap: (){
-                    // Navigator.pop(context);
-                  },
-                  child: Container(
-                      alignment: Alignment.center,
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).unselectedWidgetColor,
-                          borderRadius: BorderRadius.circular(10)
-                      ),
-                      child: const Icon(Icons.person)
-                  ),
-                ),
-              ],
-            ),
-          ),
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),

@@ -26,36 +26,36 @@ class _ContactUsState extends State<ContactUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading:  Padding(
+          padding: const EdgeInsets.only(left: 10.0, top: 10),
+          child: GestureDetector(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Container(
+                alignment: Alignment.center,
+                height: 50,
+                width: 40,
+                decoration: BoxDecoration(
+                    color: Theme.of(context).unselectedWidgetColor,
+                    borderRadius: BorderRadius.circular(10)
+                ),
+                child: const Icon(Icons.arrow_back_ios_new)
+            ),
+          ),
+        ),
+
+      ),
       body: Container(
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0,  top: 50,),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: (){
-                        // Navigator.pop(context);
-                      },
-                      child: Container(
-                          alignment: Alignment.center,
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).unselectedWidgetColor,
-                              borderRadius: BorderRadius.circular(10)
-                          ),
-                          child: const Icon(Icons.arrow_back_ios_new)
-                      ),
-                    ),
-                  ],
-                ),
-              ),
 
               const Padding(
                 padding:  EdgeInsets.only(bottom: 15.0),

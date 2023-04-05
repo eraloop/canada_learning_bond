@@ -28,152 +28,156 @@ class _SocialSecurityNumberState extends State<SocialSecurityNumber> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: PageView.builder(
-          controller: _controller,
-          itemCount: sin_screens.length,
-          onPageChanged: (int i) {
-            setState(() {
-              previousIndex = currentIndex;
-              currentIndex = i;
-            });
-          },
-          itemBuilder: (context, i) =>  Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: ListView(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 10,  ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GestureDetector(
-                            onTap: (){
-                              // Navigator.pop(context);
-                            },
-                            child: Container(
-                                alignment: Alignment.center,
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                    color: Theme.of(context).unselectedWidgetColor,
-                                    borderRadius: BorderRadius.circular(10)
-                                ),
-                                child: const Icon(Icons.arrow_back_ios_new)
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: (){
-                              // Navigator.pop(context);
-                            },
-                            child: Text("CLB Support",
-                              style: Theme.of(context).textTheme.headline4,),
-                          ),
-                          GestureDetector(
-                            onTap: (){
-                              // Navigator.pop(context);
-                            },
-                            child: Container(
-                                alignment: Alignment.center,
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                    color: Theme.of(context).unselectedWidgetColor,
-                                    borderRadius: BorderRadius.circular(10)
-                                ),
-                                child: const Icon(Icons.person)
-                            ),
-                          ),
-                        ],
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading:  Padding(
+          padding: const EdgeInsets.only(left: 10.0, top: 10),
+          child: GestureDetector(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Container(
+                alignment: Alignment.center,
+                height: 50,
+                width: 40,
+                decoration: BoxDecoration(
+                    color: Theme.of(context).unselectedWidgetColor,
+                    borderRadius: BorderRadius.circular(10)
+                ),
+                child: const Icon(Icons.arrow_back_ios_new)
+            ),
+          ),
+        ),
+        centerTitle: true,
+        title:  Text("CLB Support",
+          style: Theme.of(context).textTheme.headline4,),
+
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 20.0 , top: 10),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                GestureDetector(
+                  onTap: (){
+                    // Navigator.pop(context);
+                  },
+                  child: Container(
+                      alignment: Alignment.center,
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).unselectedWidgetColor,
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      child: const Icon(Icons.person)
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+      body: PageView.builder(
+        controller: _controller,
+        itemCount: sin_screens.length,
+        onPageChanged: (int i) {
+          setState(() {
+            previousIndex = currentIndex;
+            currentIndex = i;
+          });
+        },
+        itemBuilder: (context, i) =>  Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: ListView(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                    child: Text(sin_screens[i].title.toString(),
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headline2,),
+                  ),
+
+                  if(sin_screens[i].image.toString().isNotEmpty) Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Image.asset(sin_screens[i].image.toString(),
+                        height: 300,
                       ),
                     ),
-
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-                      child: Text(sin_screens[i].title.toString(),
+                  ),
+                  Padding(padding: const EdgeInsets.symmetric(horizontal: 20,
+                      vertical: 10),
+                    child: Html(
+                      data: sin_screens[i].content,
+                      // tagsList: Html.tags..addAll(["bird", "flutter"]),
+                      style: {
+                        'h1': Style(textOverflow: TextOverflow.ellipsis, fontSize: const FontSize(18), fontWeight: FontWeight.w700, color: Theme.of(context).primaryColor),
+                        'p': Style( fontSize: const FontSize(14),color: Colors.black, fontWeight: FontWeight.w600
+                        ),
+                        'button': Style(color: Colors.orange)
+                      },
+                    ),
+                  ),
+                  if(sin_screens[i].isEnd!) Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: TextButton(
+                      onPressed: () async {
+                      },
+                      style: ButtonStyle(
+                          padding: MaterialStateProperty.all<EdgeInsets>(
+                              const EdgeInsets.symmetric(
+                                vertical: 20,)),
+                          shape:
+                          MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                              )),
+                          // alignment: AlignmentGeometry.,
+                          // 4267B2
+                          backgroundColor:
+                          MaterialStateProperty.all(Theme.of(context).primaryColor)),
+                      child: Text(
+                        "Apply",
+                        style: Theme.of(context).textTheme.headline3,
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.headline2,),
-                    ),
-
-                    if(sin_screens[i].image.toString().isNotEmpty) Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(30),
-                        child: Image.asset(sin_screens[i].image.toString(),
-                          height: 300,
-                        ),
                       ),
                     ),
-                    Padding(padding: const EdgeInsets.symmetric(horizontal: 20,
-                        vertical: 10),
-                      child: Html(
-                        data: sin_screens[i].content,
-                        // tagsList: Html.tags..addAll(["bird", "flutter"]),
-                        style: {
-                          'h1': Style(textOverflow: TextOverflow.ellipsis, fontSize: const FontSize(18), fontWeight: FontWeight.w700, color: Theme.of(context).primaryColor),
-                          'p': Style( fontSize: const FontSize(14),color: Colors.black, fontWeight: FontWeight.w600
-                          ),
-                          'button': Style(color: Colors.orange)
-                        },
-                      ),
-                    ),
-                    if(sin_screens[i].isEnd!) Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: TextButton(
-                        onPressed: () async {
-                        },
-                        style: ButtonStyle(
-                            padding: MaterialStateProperty.all<EdgeInsets>(
-                                const EdgeInsets.symmetric(
-                                  vertical: 20,)),
-                            shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                )),
-                            // alignment: AlignmentGeometry.,
-                            // 4267B2
-                            backgroundColor:
-                            MaterialStateProperty.all(Theme.of(context).primaryColor)),
-                        child: Text(
-                          "Apply",
-                          style: Theme.of(context).textTheme.headline3,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
+                  ),
+                ],
+              ),
+            ),
+            // const Spacer(),
+            Container(
+                width: double.infinity,
+                height: 50,
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+                child: Stack(
+                  alignment: Alignment.center,
+                  clipBehavior: Clip.none,
+                  children: [
+                    Container(
+                      alignment: Alignment.center,
+                      height: double.infinity,
+                      child: Center(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            buildDot(currentIndex == 0, currentIndex > 0),
+                            const SizedBox(width: 18,),
+                            buildDot(currentIndex == 1, currentIndex > 1),
+                          ],
+                        ),),
                     ),
                   ],
-                ),
-              ),
-              // const Spacer(),
-              Container(
-                  width: double.infinity,
-                  height: 50,
-                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-                  child: Stack(
-                    alignment: Alignment.center,
-                    clipBehavior: Clip.none,
-                    children: [
-                      Container(
-                        alignment: Alignment.center,
-                        height: double.infinity,
-                        child: Center(
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              buildDot(currentIndex == 0, currentIndex > 0),
-                              const SizedBox(width: 18,),
-                              buildDot(currentIndex == 1, currentIndex > 1),
-                            ],
-                          ),),
-                      ),
-                    ],
-                  )
-              ),
-            ],
-          ),
+                )
+            ),
+          ],
         ),
       ),
     );
